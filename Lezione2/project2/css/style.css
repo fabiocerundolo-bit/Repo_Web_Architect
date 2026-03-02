@@ -114,3 +114,26 @@ Tutti tag contenuti nell'elemento che possiede quel nome classe: tutte le immagi
     text-align: center;
     color: white;
 }
+
+
+.mt4{
+    margin-top: 40px;
+}
+
+
+.containerPerc{
+    width: 60%;
+    min-height: 50vh;
+    background-color: bisque;
+    margin: 10% auto;
+    padding: 50px;
+}
+
+.boxPerc{
+    float: left;
+    width: 20%;
+    height: 20vh;
+    background-color: black;
+    margin: auto 2.5%;
+}
+
