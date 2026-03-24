@@ -1,8 +1,10 @@
 const btnTest = document.getElementById("btnTest");
 const risultato = document.getElementById("risultato");
 const elLettera = document.getElementById("lettera");
+const elTentativi = document.getElementById("tentativi");
 
 const PAROLASEGRETA = "CASA";
+let TENTATIVI = 7;
 let parolaMostrata = [];
 
 function inizializzaGioco(){
@@ -23,23 +25,28 @@ function inizializzaGioco(){
 function controllaLettera(lettera){
     lettera = lettera.toUpperCase();
 
-    risultato.innerHTML = "";
+    if(TENTATIVI > 0){
 
-    for(let i = 0; i < PAROLASEGRETA.length; i++){
-        if(PAROLASEGRETA[i] === lettera && parolaMostrata[i] != lettera){
-            parolaMostrata[i] = lettera;
-            parolaMostrata.forEach(lettera => {
-                risultato.innerHTML += `${lettera} `;
-            });
-        }
+        for(let i = 0; i < PAROLASEGRETA.length; i++){
+            if(PAROLASEGRETA[i] === lettera && parolaMostrata[i] != lettera){
+                parolaMostrata[i] = lettera;
+            }    
+        }   
+        TENTATIVI--;
+        elTentativi.innerHTML = TENTATIVI;  
+        risultato.innerHTML = parolaMostrata.join(" ");
+
+        if(parolaMostrata.join("").toLocaleUpperCase() == PAROLASEGRETA){
+            risultato.innerHTML += "<br>BRAVO, hai vinto !!";
+        };
+        
+    }else{
+        risultato.innerHTML = "Mi spiace, non hai trovato la parola segreta";
     }
 }
 
 btnTest.addEventListener("click", function(){
     controllaLettera(elLettera.value);
 })
-
-
-
 
 document.addEventListener("DOMContentLoaded", inizializzaGioco)
