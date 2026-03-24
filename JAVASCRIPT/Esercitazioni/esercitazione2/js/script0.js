@@ -33,7 +33,7 @@ function controllaLettera(lettera){
             }    
         }   
         TENTATIVI--;
-        elTentativi.innerHTML = TENTATIVI;  
+        elTentativi.innerHTML = TENTATIVI + " tentativi";  
         risultato.innerHTML = parolaMostrata.join(" ");
 
         if(parolaMostrata.join("").toLocaleUpperCase() == PAROLASEGRETA){
