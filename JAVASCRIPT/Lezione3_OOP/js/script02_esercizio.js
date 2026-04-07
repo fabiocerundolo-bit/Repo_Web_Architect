@@ -52,21 +52,22 @@ class Studente {
 
 }
 
-let stu = new Studente("A", "B", "corso", "a@mail.com");
-let stu1 = new Studente("A", "B", "corso", "a@mail.com");
-let stu2 = new Studente("A", "B", "corso", "a@mail.com");
-let stu3 = new Studente("A", "B", "corso", "a@mail.com");
-console.log(stu.infoStudente());
-console.log(stu1.infoStudente());
-console.log(stu2.infoStudente());
-stu2.setCodFisc("SADFGHDJHT65436SS");
-console.log(stu2.getCodFisc());
-console.log(stu2.matricola);
-console.log(stu2.getNome());
 
 
 
 
+
+// let stu = new Studente("A", "B", "corso", "a@mail.com");
+// let stu1 = new Studente("A", "B", "corso", "a@mail.com");
+// let stu2 = new Studente("A", "B", "corso", "a@mail.com");
+// let stu3 = new Studente("A", "B", "corso", "a@mail.com");
+// console.log(stu.infoStudente());
+// console.log(stu1.infoStudente());
+// console.log(stu2.infoStudente());
+// stu2.setCodFisc("SADFGHDJHT65436SS");
+// console.log(stu2.getCodFisc());
+// console.log(stu2.matricola);
+// console.log(stu2.getNome());
 
 
 
@@ -74,19 +75,47 @@ console.log(stu2.getNome());
 const btn = document.getElementById("btn");
 const btnStampa = document.getElementById("btnStampa");
 const demo = document.getElementById("demo");
+const feed = document.getElementById("feed");
 
-let listaStudenti = []
+let listaStudenti = [];
+
+const nomeStud = document.getElementById("nome");
+const cognomeStud = document.getElementById("cognome");
+const corsoStud = document.getElementById("corso");
 
 function iscriviStudente() {
     // Recupera i singoli value dei campi input e costruisce l'oggetto. Insersci lo studente nell'array "listaStudenti"
 
+    console.log(nomeStud.value);
+    
+
+    if(nomeStud.value.trim() != "" && cognomeStud.value.trim() != "" && corsoStud.value != "" ){ 
+        let studente = new Studente(nomeStud.value, cognomeStud.value, corsoStud.value);
+        listaStudenti.push(studente);
+        console.log(studente);
+        return true;
+    }else{
+        return false;
+    }
 }
+
+function controlla(){
+    if(!iscriviStudente()){
+        feed.textContent = "Mi spiace, ti mancano dei campi da compilare";
+    }else{
+        feed.textContent = "";
+        clearForm();
+    }
+} 
 
 function clearForm() {
-
+    let inputs = document.querySelectorAll("input");
+    [...inputs].forEach(input => {
+        input.value = "";
+    })
 }
 
-btn.addEventListener("click", iscriviStudente)
+btn.addEventListener("click", controlla)
 
 /**
  * @param {Array[Studente]} listaStudenti 
