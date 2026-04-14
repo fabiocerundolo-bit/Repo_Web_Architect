@@ -41,11 +41,19 @@ function creaCard(prodotto) {
     let prezzo = document.createElement("h4");
     prezzo.textContent = "€ " + prodotto.prezzo;
 
+    let btnCompra = document.createElement("button");
+    btnCompra.textContent = "Acquista";
+
+    btnCompra.addEventListener("click", function(){
+        console.log("Stai acquistando ", prodotto, " al prezzo di ", prodotto.prezzo);
+    })
+
     card.appendChild(nome);
     card.appendChild(img);
     card.appendChild(desc);
     card.appendChild(prezzo);
-
+    card.appendChild(btnCompra);
+    
     return card;
 }
 
