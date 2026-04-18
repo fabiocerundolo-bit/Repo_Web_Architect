@@ -1,15 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="TodoList interattiva con localStorage, Bootstrap e tema dark/light.">
+    <title>TodoList – Lezione 4 DOM</title>
+
+    <!-- Bootstrap 5 CSS (CDN) -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous"
+    >
+
+    <!-- CSS Vanilla (dopo Bootstrap → sovrascrive con selettori specifici) -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    
-    Costruisci una todolist (campo input txt e campo date e campo priorità) 
-    Ogni singolo todo è un li. Al click sul singolo li inserisci una classe per barrare. Accanto ad ogni li inserisci un pulsante per rimuovere il singolo elemento
 
+    <div class="container mt-4 mb-5">
+
+        <h1 class="mb-4">📋 TodoList</h1>
+
+        <!-- ── Form di inserimento ─────────────────────────── -->
+        <div class="row g-3 mb-3">
+            <div class="col-md-5">
+                <input
+                    id="itemInput"
+                    class="form-control"
+                    type="text"
+                    placeholder="Attività..."
+                    onkeypress="handleKeypress(event)"
+                    autocomplete="off"
+                >
+                <div class="invalid-feedback">Inserisci un'attività prima di aggiungere.</div>
+            </div>
+            <div class="col-md-5">
+                <input
+                    id="dataInput"
+                    class="form-control"
+                    type="date"
+                    placeholder="Data / Scadenza"
+                >
+            </div>
+            <div class="col-md-2 d-grid">
+                <button class="btn btn-primary" onclick="addItem()">Aggiungi</button>
+            </div>
+        </div>
+
+        <div class="d-grid mb-4">
+            <button class="btn btn-secondary" onclick="saveItems()">💾 Salva</button>
+        </div>
+
+        <!-- ── Lista attività ──────────────────────────────── -->
+        <ul id="todoList" class="list-group"></ul>
+
+    </div><!-- /container -->
+
+    <!-- Bootstrap 5 JS Bundle (Popper incluso) -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmOF1NpNJ7gAfDVKJ4dRlcMJ2M"
+        crossorigin="anonymous"
+    ></script>
+
+    <!-- TodoList JS (nessun altro script tocca queste funzioni) -->
+    <script src="./js/todoList.js" defer></script>
 
 </body>
 </html>
