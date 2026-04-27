@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubrica Personale</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="bg-light">
+    <main class="container py-4">
+        <header class="mb-4">
+            <h1 class="h2 mb-1">Rubrica Personale</h1>
+            <p class="text-muted mb-0">Gestione contatti con validazione e LocalStorage</p>
+        </header>
+
+        <div id="alertBox" class="alert d-none" role="alert"></div>
+
+        <section id="formSection" class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="h5 mb-3">Nuovo contatto</h2>
+                <form id="contactForm" class="row g-3 needs-validation" novalidate>
+                    <div class="col-md-6">
+                        <label for="fullName" class="form-label">Nome Cognome</label>
+                        <input type="text" class="form-control" id="fullName" required>
+                        <div class="invalid-feedback">Inserisci nome e cognome.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="phone" class="form-label">Numero Telefono</label>
+                        <input type="tel" class="form-control" id="phone" required>
+                        <div class="invalid-feedback">Inserisci un numero di telefono valido.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                        <div class="invalid-feedback">Inserisci un indirizzo email valido.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label d-block">Immagine (Avatar)</label>
+                        <div id="avatarPicker" class="avatar-picker" role="radiogroup" aria-label="Seleziona un avatar"></div>
+                        <div class="form-text">Scegli uno degli avatar UI Faces per il contatto.</div>
+                        <div id="avatarFeedback" class="avatar-feedback d-none">Seleziona un avatar.</div>
+                    </div>
+
+                    <div class="col-12 d-flex gap-2">
+                        <button class="btn btn-primary" type="submit">Salva contatto</button>
+                        <button id="btnShowContacts" class="btn btn-outline-secondary" type="button">Mostra Rubrica</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section id="listSection" class="card shadow-sm mt-4 d-none">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="h5 mb-0">Contatti salvati</h2>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <button id="btnDeleteSelected" class="btn btn-danger" type="button">Elimina selezionati</button>
+                        <button id="btnShowForm" class="btn btn-success" type="button">Aggiungi Contatto</button>
+                    </div>
+                </div>
+                <div id="contactsGrid" class="row g-3"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
